@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --color-studio-bg: #0a0a0a;
+  --color-studio-surface: #141414;
+  --color-studio-text: #e5e5e5;
+  --color-studio-accent: #c5a059;
+  
+  --shadow-frame: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(197, 160, 89, 0.2);
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-studio-bg text-studio-text font-sans antialiased;
+    perspective: 2000px;
+  }
+}
+
+/* Fix for anchor links being hidden behind fixed header */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+@media (min-width: 768px) {
+  [id] {
+    scroll-margin-top: 120px;
+  }
+}
+
+.three-d-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.three-d-card:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+}
